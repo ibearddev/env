@@ -4,11 +4,11 @@
 [![Coverage Status](https://img.shields.io/codecov/c/gh/caarlos0/env.svg?logo=codecov&style=for-the-badge)](https://codecov.io/gh/caarlos0/env)
 [![](http://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://pkg.go.dev/github.com/caarlos0/env/v6)
 
-Simple lib to parse envs to structs in Go.
+Простая библиотека для парсинга переменных окружения (env) в структуры Go.
 
-## Example
+## Пример
 
-A very basic example:
+Очень простой пример:
 
 ```go
 package main
@@ -40,19 +40,19 @@ func main() {
 }
 ```
 
-You can run it like this:
+Вы можете запустить указанную ниже команду и получить следующий результат:
 
 ```sh
 $ PRODUCTION=true HOSTS="host1:host2:host3" DURATION=1s go run main.go
 {Home:/your/home Port:3000 IsProduction:true Hosts:[host1 host2 host3] Duration:1s}
 ```
 
-## Supported types and defaults
+## Поддерживаемые типы
 
-Out of the box all built-in types are supported, plus a few others that
-are commonly used.
+Из коробки поддерживаются все встроенные типы + некоторые другие, которые
+обычно используются.
 
-Complete list:
+Полный список:
 
 - `string`
 - `bool`
@@ -73,20 +73,20 @@ Complete list:
 - `encoding.TextUnmarshaler`
 - `url.URL`
 
-Pointers, slices and slices of pointers of those types are also supported.
+Также поддерживаются указатели, фрагменты и фрагменты указателей этих типов.
 
-You can also use/define a [custom parser func](#custom-parser-funcs) for any
-other type you want.
+Вы также можете использовать / определить [custom parser func](#custom-parser-funcs) для любого
+другого типа, который вы хотите использовать.
 
-If you set the `envDefault` tag for something, this value will be used in the
-case of absence of it in the environment.
+Если вы установите для чего-то тег `envDefault`, это значение будет использоваться в
+в случае его отсутствия в переменных среды.
 
-By default, slice types will split the environment value on `,`; you can change
-this behavior by setting the `envSeparator` tag.
+По умолчанию типы срезов разделяют значение среды на `,`; ты можешь измениться
+это поведение путем установки тега `envSeparator`.
 
-If you set the `envExpand` tag, environment variables (either in `${var}` or
-`$var` format) in the string will be replaced according with the actual value
-of the variable.
+Если вы установите тег `envExpand`, переменные среды (либо в ` $ {var} `, либо
+формате `$ var`) в строке будет заменен в соответствии с фактическим значением
+переменной.
 
 **Unexported fields are ignored.**
 
